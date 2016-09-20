@@ -312,7 +312,7 @@
     //
     
     if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"Language"] isEqualToString:@"odisha"]) {//odisha
-        self.titleLabel.font = [UIFont fontWithName:@"AkrutiOriSarala06" size:self.titleLabel.font.pointSize];
+        self.titleLabel.font = [UIFont fontWithName:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language_Font"] size:self.titleLabel.font.pointSize];
 
     }else{
         self.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:14.0f];
@@ -379,14 +379,14 @@
             _languageBtn = [[UIButton alloc] initWithFrame:CGRectMake(rect.size.width-60-30, 0, 60, LEFT_NAV_BUTTON_HEIGHT)];
             if ([[[NSUserDefaults standardUserDefaults] valueForKey:@"Language"] isEqualToString:@"odisha"]) {//odisha
                 [_languageBtn setTitle:@"English" forState:UIControlStateNormal];
-                [_languageBtn setTitle:@"ଓଡ଼ିଶା" forState:UIControlStateSelected];
+                [_languageBtn setTitle:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language"] forState:UIControlStateSelected];
 
             }else if([[[NSUserDefaults standardUserDefaults] valueForKey:@"Language"] isEqualToString:@"English"]){
-                [_languageBtn setTitle:@"ଓଡ଼ିଶା" forState:UIControlStateNormal];
+                [_languageBtn setTitle:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language"] forState:UIControlStateNormal];
                 [_languageBtn setTitle:@"English" forState:UIControlStateSelected];
 
             }else{
-                [_languageBtn setTitle:@"ଓଡ଼ିଶା" forState:UIControlStateNormal];
+                [_languageBtn setTitle:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language"] forState:UIControlStateNormal];
                 [_languageBtn setTitle:@"English" forState:UIControlStateSelected];
             }
             [_languageBtn addTarget:viewController

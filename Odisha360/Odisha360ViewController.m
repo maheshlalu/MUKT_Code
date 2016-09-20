@@ -128,12 +128,12 @@ static NSString * const reuseIdentifier = @"ODNewsCell";
     
    // lanBtn.selected =! lanBtn.selected;
     
-    if ([lanBtn.titleLabel.text isEqualToString:@"ଓଡ଼ିଶା"]) {//ଓଡ଼ିଶା
+    if ([lanBtn.titleLabel.text isEqualToString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language"]]) {//ଓଡ଼ିଶା
         [self didTapOdishaLanguage:nil];
         [navController.languageBtn setTitle:@"English" forState:UIControlStateNormal];
     }else if ([lanBtn.titleLabel.text isEqualToString:@"English"]){
         [self didTapEnglishLanguage:nil];
-        [navController.languageBtn setTitle:@"ଓଡ଼ିଶା" forState:UIControlStateNormal];
+        [navController.languageBtn setTitle:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language"] forState:UIControlStateNormal];
     }
 //    if (lanBtn.selected) {
 //        [self didTapOdishaLanguage:nil];
@@ -174,6 +174,15 @@ static NSString * const reuseIdentifier = @"ODNewsCell";
     return true;
 }
 
+- (void)getBreakingNews{
+    //http://muktha.tv:8081/Services/getMasters?type=Breaking%20news&unlimited=false&mallId=6
+    
+    
+    
+    [OGOdishaNews getNewsWithType:@"Breaking news" currentPageNumber:@"" block:^(NSArray *mallsArray, NSError *error) {
+        NSLog(@"breaking news %@",mallsArray);
+    }];
+}
 
 - (void)loadDatas
 {
@@ -212,7 +221,7 @@ static NSString * const reuseIdentifier = @"ODNewsCell";
         
         self.currentPage++;
     }];
-
+    [self getBreakingNews];
     
 }
 
@@ -299,11 +308,12 @@ static NSString * const reuseIdentifier = @"ODNewsCell";
     } else {
         jobsInfo = [self.tableData objectAtIndex:indexPath.row];
     }
+    //[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language_Font"];
 
     if (isOdishaLanguage) {
-        cell.newsTitle.font = [UIFont fontWithName:@"AkrutiOriSarala06" size:cell.newsTitle.font.pointSize];
-        cell.newsSourceLabel.font = [UIFont fontWithName:@"AkrutiOriSarala06" size:cell.newsSourceLabel.font.pointSize];
-        cell.newsDateLabel.font = [UIFont fontWithName:@"AkrutiOriSarala06" size:cell.newsDateLabel.font.pointSize];
+        cell.newsTitle.font = [UIFont fontWithName:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language_Font"] size:cell.newsTitle.font.pointSize];
+        cell.newsSourceLabel.font = [UIFont fontWithName:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language_Font"] size:cell.newsSourceLabel.font.pointSize];
+        cell.newsDateLabel.font = [UIFont fontWithName:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language_Font"] size:cell.newsDateLabel.font.pointSize];
 
     }else{
         
@@ -406,11 +416,11 @@ static NSString * const reuseIdentifier = @"ODNewsCell";
 - (IBAction)didTapEnglishLanguage:(id)sender {
     CCKFNavDrawer *navController = (CCKFNavDrawer*)self.navigationController;
    // navController.languageBtn.selected = false;
-    [navController.languageBtn setTitle:@"ଓଡ଼ିଶା" forState:UIControlStateNormal];
+    [navController.languageBtn setTitle:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language"] forState:UIControlStateNormal];
     navController.titleLabel.font  = [UIFont fontWithName:@"Roboto-Regular" size:14.0f];
 
     [self dismissViewControllerAnimated:false completion:nil];
-    [OGWorkSpace sharedWorkspace].mallId = @"3";
+    [OGWorkSpace sharedWorkspace].mallId = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"MALL_ID"];
     isOdishaLanguage = false;
     [[NSUserDefaults standardUserDefaults] setValue:@"English" forKey:@"Language"];
     [self loadDatas];
@@ -420,11 +430,11 @@ static NSString * const reuseIdentifier = @"ODNewsCell";
 - (IBAction)didTapOdishaLanguage:(id)sender {
     CCKFNavDrawer *navController = (CCKFNavDrawer*)self.navigationController;
    // navController.languageBtn.selected = true;
-    navController.titleLabel.font  = [UIFont fontWithName:@"AkrutiOriSarala06" size:navController.titleLabel.font.pointSize];
+    navController.titleLabel.font  = [UIFont fontWithName:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language_Font"] size:navController.titleLabel.font.pointSize];
 
     [navController.languageBtn setTitle:@"English" forState:UIControlStateNormal];
     [self dismissViewControllerAnimated:false completion:nil];
-    [OGWorkSpace sharedWorkspace].mallId = @"5";
+    [OGWorkSpace sharedWorkspace].mallId = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"Local_Language_MALL_ID"];
     [[NSUserDefaults standardUserDefaults] setValue:@"odisha" forKey:@"Language"];
     isOdishaLanguage = true;
     

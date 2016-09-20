@@ -2,12 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Local_Language</key>
+	<string>తెలుగు న్యూస్</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>OD News 360</string>
+	<string>Muktha TV</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -27,7 +33,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MALL_ID</key>
-	<string>3</string>
+	<string>4</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -38,7 +44,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>PRODUCT_NAME</key>
-	<string>Odisha News 360</string>
+	<string>Muktha TV</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Regular.ttf</string>
@@ -52,6 +58,8 @@
 		<string>AkrutiOriSarala06.ttf</string>
 		<string>Odia_OT_Jagannatha.TTF</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>
@@ -72,13 +80,11 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>Local_Language_MALL_ID</key>
+	<string>6</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>Local_Language</key>
-	<string>ଓଡ଼ିଶା</string>
 	<key>Local_Language_Font</key>
 	<string>AkrutiOriSarala06</string>
-	<key>Local_Language_MALL_ID</key>
-	<string>5</string>
 </dict>
 </plist>

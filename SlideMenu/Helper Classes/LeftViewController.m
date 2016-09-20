@@ -141,6 +141,12 @@
                  break;
              }
          }
+         NSSortDescriptor *sortDescriptor;
+         sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"Display_Name"
+                                                      ascending:YES];
+         NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+         self.widgets = [NSMutableArray arrayWithArray:[self.widgets sortedArrayUsingDescriptors:sortDescriptors]];
+         [self.tblCollapesAndExpand reloadData];
          
      }];
     
